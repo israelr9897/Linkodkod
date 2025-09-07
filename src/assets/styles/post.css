@@ -1,13 +1,13 @@
-.main-post{
+.main-post {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
 }
 
-.post{
+.post {
     width: 50%;
     height: 60%;
     display: flex;
@@ -20,29 +20,31 @@
     /* color: #2986ff; */
 }
 
-.head-post{
+.head-post {
     width: 100%;
     height: 20%;
     /* border: 3px solid #2986ff; */
     display: flex;
+    align-items: center;
 
 }
 
-.logo-img{
+.logo-img {
     width: 15%;
     height: 100%;
     /* border: 1px solid blue; */
-    
+
 }
 
-.description{
+.description {
     width: 70%;
     /* border: 1px solid blue; */
     font-size: 1.5vw;
-    margin-bottom: 20%;
+    display: flex;
+    justify-content: center;
 }
 
-.details{
+.details {
     width: 80%;
     height: 40%;
     display: flex;
@@ -56,7 +58,7 @@
     gap: 7%;
 }
 
-.likes{
+.likes {
     width: 100%;
     height: 15%;
     display: flex;
@@ -65,23 +67,64 @@
     
 }
 
-.like{
-    width: 7%;
-    height: 80%;
+.like {
+    width: 65px;
+    height: 100%;
     /* border: 1px solid blue;    */
-    background-image: url("../images/like-img.png"); 
+    background-image: url("../images/like-img.png");
     background-size: cover;
     display: flex;
     justify-content: end;
     align-items: end;
 }
 
-.like:hover{
+.like:hover {
     cursor: pointer;
 }
 
 
-.counter{
+.counter {
     font-size: 1vw;
     font-weight: 600;
+}
+
+
+/* for phones */
+@media screen and (max-width: 700px) {
+
+    .post {
+        width: 90%;
+        height: 40%;
+    }
+
+    .head-post {
+        height: 20%;
+
+    }
+
+    .logo-img {
+        width: 20%;
+        height: 100%;
+
+    }
+
+    .description {
+        width: 70%;
+        font-size: 3vw;
+    }
+
+    .details {
+        font-size: 2.5vw;
+
+    }
+
+    .like {
+        width: 55px;
+    }
+
+
+    .counter {
+        font-size: 4vw;
+    }
+
 }
