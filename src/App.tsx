@@ -1,10 +1,10 @@
 import "./App.css";
-import Post from "./comps/Post";
+import PostsPage from "./pages/PostsPage";
 
 function App() {
   return (
     <>
-      <Post />
+      <PostsPage />
     </>
   );
 }
