@@ -75,6 +75,21 @@ const dataPosts:Array<Post> = [
     name: "Israel israeli",
     date: "07/09/2025",
   },
+  {
+    discrption: "Hello World",
+    name: "Israel israeli",
+    date: "07/09/2025",
+  },
+  {
+    discrption: "Hello World",
+    name: "Israel israeli",
+    date: "07/09/2025",
+  },
+  {
+    discrption: "Hello World",
+    name: "Israel israeli",
+    date: "07/09/2025",
+  },
 ];
 
 export default dataPosts;

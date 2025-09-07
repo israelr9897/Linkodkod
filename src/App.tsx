@@ -1,10 +1,12 @@
 import "./App.css";
-import PostsPage from "./pages/PostsPage";
+import Content from "./components/appliction-layout/Content";
+import Header from "./components/appliction-layout/Header";
 
 function App() {
   return (
     <>
-      <PostsPage />
+      <Header />
+      <Content />
     </>
   );
 }

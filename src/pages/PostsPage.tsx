@@ -1,4 +1,4 @@
-import Posts from "../components/Posts";
+import Posts from "../components/appliction-layout/content/posts/Posts";
 import "../assets/styles/posts.css";
 
 export default function PostsPage() {
