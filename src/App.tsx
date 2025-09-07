@@ -1,0 +1,14 @@
+import "./App.css";
+import Content from "./components/content/Content";
+import Header from "./components/appliction-layout/Header";
+
+function App() {
+  return (
+    <>
+      <Header />
+      <Content />
+    </>
+  );
+}
+
+export default App;
