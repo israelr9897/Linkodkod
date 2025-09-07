@@ -1,6 +1,6 @@
 import "../assets/styles/post.css";
 import { useState } from "react";
-import worldImg from "../assets/images/world.png"
+import worldImg from "../assets/images/world.png";
 
 export type Post = {
   discrption: string;
