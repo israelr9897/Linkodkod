@@ -1,5 +1,5 @@
 import "./App.css";
-import Content from "./components/appliction-layout/Content";
+import Content from "./components/content/Content";
 import Header from "./components/appliction-layout/Header";
 
 function App() {
