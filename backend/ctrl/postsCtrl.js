@@ -6,7 +6,7 @@ export async function getAllPosts(req, res) {
     res.json({data: data});
   } catch (error) {
     console.log("get all posts error massege: ", error);
-    res.status(500).json({ msg: error });
+    res.status(500).send({ msg: error });
   }
 }
 export async function getPostById(req, res) {
