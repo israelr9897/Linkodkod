@@ -24,6 +24,13 @@
     cursor: pointer;
 }
 
+.addPost{
+    color: #006eff;
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: 600;
+}
+
 .slogen{
     width: 70%;
     font-size: 20px;
