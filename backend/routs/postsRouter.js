@@ -1,5 +1,5 @@
 import express from "express"
-import { getAllPosts, getPostById } from "../ctrl/postsCtrl";
+import { getAllPosts, getPostById } from "../ctrl/postsCtrl.js";
 
 const router = express.Router();
 
