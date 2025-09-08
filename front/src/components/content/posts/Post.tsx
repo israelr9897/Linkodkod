@@ -4,7 +4,7 @@ import likeImg from "../../../assets/images/like-img.png";
 import dislikeImg from "../../../assets/images/dislike-img.png";
 import type { Post } from "./Posts";
 
-export default function Post({id,  discrption, content, name, date }: Post) {
+export default function Post({ id, discrption, content, name, date }: Post) {
   const [countLike, setCountLike] = useState(0);
   const [countDislike, setCountDislike] = useState(0);
   const [isOneLike, setIsOneLike] = useState(true);
@@ -12,7 +12,11 @@ export default function Post({id,  discrption, content, name, date }: Post) {
   return (
     <div className="post">
       <div className="head-post">
-        <img className="post-img" src={`http://localhost:3005/${Number(id) % 2 + 1}.png`} alt="logo-img" />
+        <img
+          className="post-img"
+          src={`http://localhost:3005/images/${id}.png`}
+          alt="logo-img"
+        />
         <div className="description">
           <h1>{discrption}</h1>
         </div>
