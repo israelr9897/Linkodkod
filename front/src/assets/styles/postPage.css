@@ -1,0 +1,31 @@
+.postPage{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.postPage > .post{
+    width: 25%;
+    height: 80%;
+    
+}
+
+
+.postPage > .post > .post-img{
+    height: 80%;
+}
+
+
+/* for phones */
+@media screen and (max-width: 700px) {
+    .postPage > .post{
+        width: 70%;
+        height: 90%;
+        
+    }
+    .postPage > .post > .post-img{
+        height: 50%;
+    }
+
+}
