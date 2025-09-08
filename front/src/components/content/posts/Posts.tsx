@@ -1,36 +1,31 @@
 import Post from "./Post";
-import "../../../assets/styles/postsPage.css";
-import { useEffect, useState } from "react";
-import { GetAllPostsApi } from "../../../api/clientApi";
+import "../../../assets/styles/posts.css";
+import { useContext, useEffect } from "react";
+import { GetAllPostsApi, writePostApi } from "../../../api/clientApi";
 import loading from "../../../assets/images/loading.png";
-
-export type Post = {
-  id: string;
-  discrption: string;
-  content: string;
-  name: string;
-  date: string;
-};
+import {
+  postContext,
+  type objType,
+  type PostType,
+} from "../../../useContext/postContext";
 
 export default function Posts() {
-  const [posts, setPosts] = useState<Array<Post>>();
+  const { posts, setPosts }: objType = useContext(postContext)!;
   useEffect(() => {
     const server = async () => {
-      const response = await GetAllPostsApi();
-      setPosts(response);
+      const response: PostType[] = await GetAllPostsApi();
+      setPosts!(response);
+      localStorage.setItem("data", JSON.stringify(response));
     };
-    server();
+    if (!posts?.length) server();
+    return () => {
+      posts && writePostApi(posts);
+    };
   }, []);
   return posts ? (
     <div className="posts">
       {posts.map((post) => (
-        <Post
-          id={post.id}
-          discrption={post.discrption}
-          content={post.content}
-          name={post.name}
-          date={post.date}
-        />
+        <Post key={post.id} post={post} />
       ))}
     </div>
   ) : (
@@ -38,5 +33,5 @@ export default function Posts() {
       <img src={loading} />
       <h1 className="text">We are bringing you the posts right now ...</h1>
     </div>
-  )
+  );
 }

@@ -2,27 +2,31 @@ import "../../../assets/styles/post.css";
 import { useState } from "react";
 import likeImg from "../../../assets/images/like-img.png";
 import dislikeImg from "../../../assets/images/dislike-img.png";
-import type { Post } from "./Posts";
+import type { PostType } from "../../../useContext/postContext";
+import { useNavigate } from "react-router";
 
-export default function Post({ id, discrption, content, name, date }: Post) {
-  const [countLike, setCountLike] = useState(0);
-  const [countDislike, setCountDislike] = useState(0);
+export default function Post({ post }: { post: PostType }) {
+  const [countLike, setCountLike] = useState<number>(Number(post.like));
+  const [countDislike, setCountDislike] = useState<number>(
+    Number(post.dislike)
+  );
   const [isOneLike, setIsOneLike] = useState(true);
   const [isOneDisLike, setIsOneDisLike] = useState(true);
+  const navigate = useNavigate();
   return (
-    <div className="post">
+    <div className="post" onClick={() => navigate(`/post/${post.id}`)}>
       <div className="head-post">
         <img
           className="post-img"
-          src={`http://localhost:3005/images/${id}.png`}
+          src={`http://localhost:3005/images/${post.id}.png`}
           alt="logo-img"
         />
         <div className="description">
-          <h1>{discrption}</h1>
+          <h1>{post.discrption}</h1>
         </div>
       </div>
       <div className="content">
-        <p>{content}</p>
+        <p>{post.content}</p>
       </div>
       <div className="likes">
         <div
@@ -61,8 +65,8 @@ export default function Post({ id, discrption, content, name, date }: Post) {
         </div>
       </div>
       <div className="details">
-        <p className="name">Name: {name}</p>
-        <p className="date">Created in: {date}</p>
+        <p className="name">Name: {post.name}</p>
+        <p className="date">Created in: {post.date}</p>
       </div>
     </div>
   );

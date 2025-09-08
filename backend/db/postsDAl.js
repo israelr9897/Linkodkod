@@ -8,3 +8,10 @@ export async function getAllPostsDB() {
     throw error;
   }
 }
+export async function writeAllPostsDB(data) {
+  try {
+    fs.writeFileSync("db/postsData.txt", "utf-8",data, () => {});
+  } catch (error) {
+    throw error;
+  }
+}

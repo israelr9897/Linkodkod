@@ -5,17 +5,27 @@
     justify-content: space-between;
     align-items: center;
     /* border-bottom: 3px solid #006eff; */
-    background-color: rgb(187, 187, 187);
+    background-color: #bbbbbb;
     color: #006eff;
     position: sticky;
     top: 0;
     padding: 1%;
+    
+    
+}
 
-
+.toHome{
+    width: 50px;
+    height: 50px;
+    background-image: url("./home.png");
+    background-size:cover ;
+}
+.toHome:hover{
+    cursor: pointer;
 }
 
 .slogen{
-    width: 80%;
+    width: 70%;
     font-size: 20px;
     /* border: 1px solid #2986ff; */
     
@@ -33,18 +43,25 @@
 .logo-img{
     width: 100px;
     height: 100px;
-    border-radius: 20px;
+    border-radius: 10px;
 
 }
 
 
 /* for phones */
 @media screen and (max-width: 700px) {
+    .header{
+        height: 10vh;
+    }
+    .toHome{
+        width: 8%;
+        height: 35%;
+    }
     .slogen{
         font-size: 10px;
     }
     .logo-img{
-        width: 70px;
-        height: 70px;
+        width: 60px;
+        height: 50px;
     }
 }
