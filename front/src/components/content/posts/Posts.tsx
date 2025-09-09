@@ -1,7 +1,7 @@
 import Post from "./Post";
 import "../../../assets/styles/posts.css";
 import { useContext, useEffect } from "react";
-import { GetAllPostsApi, writePostApi } from "../../../api/clientApi";
+import { GetAllPostsApi } from "../../../api/clientApi";
 import loading from "../../../assets/images/loading.png";
 import {
   postContext,
@@ -12,15 +12,18 @@ import {
 export default function Posts() {
   const { posts, setPosts }: objType = useContext(postContext)!;
   useEffect(() => {
-    const server = async () => {
-      const response: PostType[] = await GetAllPostsApi();
-      setPosts!(response);
-      localStorage.setItem("data", JSON.stringify(response));
-    };
-    if (!posts?.length) server();
-    return () => {
-      posts && writePostApi(posts);
-    };
+    const data = localStorage.getItem("data");
+    console.log(data);
+    if (data) {
+      setPosts!(JSON.parse(data));
+    } else {
+      const server = async () => {
+        const response: PostType[] = await GetAllPostsApi();
+        setPosts!(response);
+        localStorage.setItem("data", JSON.stringify(response));
+      };
+      server();
+    }
   }, []);
   return posts ? (
     <div className="posts">

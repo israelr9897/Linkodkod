@@ -1,4 +1,8 @@
-import { createContext, useEffect, useState, type PropsWithChildren } from "react";
+import {
+  createContext,
+  useState,
+  type PropsWithChildren,
+} from "react";
 
 export const postContext = createContext<objType | null>(null);
 
@@ -33,13 +37,13 @@ export default function PostContext({ children }: PropsWithChildren) {
     posts: posts,
     setPosts: setPosts,
   };
-  useEffect(() => {
-    const data = localStorage.getItem("data");
-    if (data) {
-      setPosts(JSON.parse(data));
-    }
-  }, []);
-
+  // useEffect(() => {
+  //   console.log("useeffect context");
+  //   const data = localStorage.getItem("data");
+  //   if (data) {
+  //     setPosts(JSON.parse(data));
+  //   }
+  // }, []);
   return (
     <div>
       <postContext.Provider value={obj}>{children}</postContext.Provider>

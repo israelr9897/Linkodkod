@@ -1,4 +1,5 @@
 import { getAllPostsDB, writeAllPostsDB } from "../db/postsDAl.js";
+import { createPost } from "../db/services/postService.js";
 
 export async function getAllPosts(req, res) {
   try {
@@ -11,9 +12,8 @@ export async function getAllPosts(req, res) {
 }
 export async function getPostById(req, res) {
   try {
-    let data = await getAllPostsDB();
+    const data = JSON.parse(await getAllPostsDB());
     if (data) {
-      data = JSON.parse(data);
       const post = data.find((p) => p.id === req.params.id);
       if (post) return res.json(post);
     }
@@ -24,12 +24,15 @@ export async function getPostById(req, res) {
   }
 }
 
-export async function writeAllPosts(req, res) {
+export async function addPost(req, res) {
   try {
-    writeAllPostsDB(req.body)
-    res.json({msg: "Written successfully!"})
+    const post = await createPost(req.body);
+    const data = JSON.parse(await getAllPostsDB());
+    data.push(post);
+    writeAllPostsDB(data);
+    res.json({ msg: "Written successfully!", post: post});
   } catch (error) {
     console.log("write all posts error massege:", error);
-    res.status(500).json({msg: error})
+    res.status(500).json({ msg: error });
   }
 }

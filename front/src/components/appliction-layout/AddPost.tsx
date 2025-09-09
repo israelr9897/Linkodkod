@@ -1,6 +1,11 @@
-import { useState } from "react";
-import type { PostType } from "../../useContext/postContext";
+import { useContext, useState } from "react";
+import {
+  postContext,
+  type objType,
+  type PostType,
+} from "../../useContext/postContext";
 import "../../assets/styles/addPost.css";
+import { writePostApi } from "../../api/clientApi";
 
 const postObj: PostType = {
   id: "",
@@ -8,12 +13,21 @@ const postObj: PostType = {
   content: "",
   name: "",
   date: "",
-  like: "",
-  dislike: "",
+  like: "0",
+  dislike: "0",
 };
 
-export default function AddPost() {
+export default function AddPost({ fn }: { fn: (isSucced: boolean) => void }) {
   const [newPost, setNewPost] = useState<PostType>(postObj);
+  const [isSucced, setIsSucced] = useState<boolean>(true);
+  const { posts }: objType = useContext(postContext)!;
+  async function handlerOnCLick() {
+    const fullPost = await writePostApi(newPost);
+    if (fullPost) {
+      localStorage.setItem("data", JSON.stringify([...posts!, fullPost]));
+      fn(true);
+    } else setIsSucced(false);
+  }
   return (
     <div className="addPostForm">
       <div className="form">
@@ -41,8 +55,13 @@ export default function AddPost() {
           onChange={(e) => setNewPost({ ...newPost, content: e.target.value })}
         />
         <div className="btn-add">
-          <div className="btn">Add Post</div>
+          <div className="btn" onClick={handlerOnCLick}>
+            Add Post
+          </div>
         </div>
+      {!isSucced && (
+        <p className="msg">Post addition failed! check if you have filled in all fields...</p>
+      )}
       </div>
     </div>
   );

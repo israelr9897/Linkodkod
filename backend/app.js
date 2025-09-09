@@ -11,6 +11,7 @@ app.use(cors());
 app.use(express.static("public"))
 
 app.use("/", (req, res, next) => {
+  console.log(req.url);
     console.log(req.method);
     next()
 })
