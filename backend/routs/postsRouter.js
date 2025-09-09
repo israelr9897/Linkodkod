@@ -1,11 +1,12 @@
 import express from "express"
-import { getAllPosts, getPostById, writeAllPosts } from "../ctrl/postsCtrl.js";
+import { getAllPosts, getPostById, addPost } from "../ctrl/postsCtrl.js";
 import { checkParams } from "../middelware/checkParmas.js";
+import { checkPost } from "../middelware/checkPost.js";
 
 const router = express.Router();
 
 router.get("/", getAllPosts)
-router.post("/allposts", writeAllPosts)
+router.post("/addpost",checkPost, addPost)
 router.get("/:id",checkParams, getPostById)
 
 export default router;

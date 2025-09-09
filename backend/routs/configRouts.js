@@ -1,10 +1,18 @@
-import RouterPosts from "./postsRouter.js"
+import { verifyToken } from "../middelware/verifyToken.js";
+import RouterPosts from "./postsRouter.js";
+import RouterAuth from "./authRouts.js";
 
-export default function configRouter(app){
-    app.use("/posts", RouterPosts)
-    
-    //route not find
-    app.use((req, res) => {
-        res.status(404).json({ msg: "Route not find" });
-      });
+export default function configRouter(app) {
+  
+  app.use("/auth", RouterAuth);
+
+  //בודק שרק מי שיש לו טוקן תקין יכול לגשת לנתוני האתר
+  app.use(verifyToken);
+
+  app.use("/posts", RouterPosts);
+
+  //route not find
+  app.use((req, res) => {
+    res.status(404).json({ msg: "Route not find" });
+  });
 }

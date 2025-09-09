@@ -1,11 +1,7 @@
-.addPostPage{
+.loginPage {
     width: 100%;
-    height: 70vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.msg-succed{
-    margin-top: 10%;
 }

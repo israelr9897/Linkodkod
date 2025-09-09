@@ -1,14 +1,15 @@
 .addPostForm{
     width: 30%;
-    height: 70%;
+    height: 80%;
     background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
+    /* border: 2px #bbbbbb solid; */
 }
 
 .form{
-    width: 60%;
+    width: 80%;
     height: 90%;
     display: flex;
     flex-direction: column;
@@ -16,7 +17,8 @@
     align-items: start;
     padding: 2% 5%;
     gap: 10px;
-    border: 1px black solid;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
     
 }
 
@@ -24,6 +26,50 @@
     width: 100%;
     height: 10%;
     border-radius: 7px;
-    background-color: #006eff20;
+    background-color: #c0c0c04b;
+    padding: 5px;
     
+}
+
+.btn-add{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    /* border: 1px black solid; */
+    
+}
+
+.btn-add > .btn{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #006eff;
+    border-radius: 10px;
+    color: white;
+}
+
+.btn-add > .btn:hover{
+    cursor: pointer;
+    background-color: white;
+    color: #006eff;
+    border: 1px #006eff solid;
+
+}
+
+.form  .msg{
+    color: red;
+
+}
+
+/* for phones */
+@media screen and (max-width: 700px) {
+    .addPostForm{
+        width: 80%;
+        height: 80%;
+    }
 }
