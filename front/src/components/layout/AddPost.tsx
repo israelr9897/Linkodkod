@@ -15,6 +15,7 @@ const postObj: PostType = {
   date: "",
   like: "0",
   dislike: "0",
+  imgUrl: "",
 };
 
 export default function AddPost({ fn }: { fn: (isSucced: boolean) => void }) {
@@ -38,11 +39,11 @@ export default function AddPost({ fn }: { fn: (isSucced: boolean) => void }) {
           placeholder="Enter here full name..."
           onChange={(e) => setNewPost({ ...newPost, name: e.target.value })}
         />
-        <label htmlFor="discrption">Enter the post description: </label>
+        <label htmlFor="discrption">Enter the post discrption: </label>
         <input
           type="text"
-          id="description"
-          placeholder="Enter here description..."
+          id="discrption"
+          placeholder="Enter here discrption..."
           onChange={(e) =>
             setNewPost({ ...newPost, discrption: e.target.value })
           }

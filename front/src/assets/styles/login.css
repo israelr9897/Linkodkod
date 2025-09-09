@@ -1,0 +1,17 @@
+.login{
+    width: 30%;
+    height: 60%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wlcome{
+    width: 100%;
+    /* height: 60%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}

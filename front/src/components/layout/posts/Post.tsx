@@ -18,7 +18,7 @@ export default function Post({ post }: { post: PostType }) {
       <div className="head-post">
         <img
           className="post-img"
-          src={`http://localhost:3005/images/${post.id}.png`}
+          src={post.imgUrl}
           alt="logo-img"
         />
         <div className="description">

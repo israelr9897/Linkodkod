@@ -30,9 +30,25 @@
     font-size: 25px;
     font-weight: 600;
 }
+.log-out{
+    color: #006eff;
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: 600;
+    display: flex;
+    justify-content: end;
+}
+
+.log-out > img{
+    width: 20%;
+}
+
+.log-out:hover{
+    cursor: pointer;
+}
 
 .slogen{
-    width: 70%;
+    /* width: 70%; */
     font-size: 20px;
     /* border: 1px solid #2986ff; */
     
@@ -64,8 +80,16 @@
         width: 8%;
         height: 35%;
     }
+
+    .addPost{
+        font-size: 15px;
+    }
+
+    .log-out{
+        font-size: 15px;
+    }
     .slogen{
-        font-size: 10px;
+        font-size: 7px;
     }
     .logo-img{
         width: 60px;

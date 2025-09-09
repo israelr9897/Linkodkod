@@ -13,7 +13,6 @@ export default function Posts() {
   const { posts, setPosts }: objType = useContext(postContext)!;
   useEffect(() => {
     const data = localStorage.getItem("data");
-    console.log(data);
     if (data) {
       setPosts!(JSON.parse(data));
     } else {

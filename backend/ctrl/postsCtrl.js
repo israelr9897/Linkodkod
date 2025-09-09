@@ -10,6 +10,7 @@ export async function getAllPosts(req, res) {
     res.status(500).send({ msg: error });
   }
 }
+
 export async function getPostById(req, res) {
   try {
     const data = JSON.parse(await getAllPostsDB());
