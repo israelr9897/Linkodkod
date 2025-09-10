@@ -1,7 +1,7 @@
 import Post from "./Post";
 import "../../../assets/styles/posts.css";
 import { useContext, useEffect } from "react";
-import { GetAllPostsApi } from "../../../api/clientApi";
+import { GetAllPostsApi } from "../../../api/postsApi";
 import loading from "../../../assets/images/loading.png";
 import {
   postContext,
@@ -11,11 +11,14 @@ import {
 
 export default function Posts() {
   const { posts, setPosts }: objType = useContext(postContext)!;
+  //טוען דאטה
   useEffect(() => {
+    //בודק אם קיימים נתונים בלוקאל סטור
     const data = localStorage.getItem("data");
     if (data) {
       setPosts!(JSON.parse(data));
     } else {
+      //כשלא קיימים נתונים עושה בקשה לשרת
       const server = async () => {
         const response: PostType[] = await GetAllPostsApi();
         setPosts!(response);

@@ -1,8 +1,8 @@
-import Auth from "../compes/Auth";
-
+import "../assets/styles/authPage.css";
+import Auth from "../components/auth/Auth";
 export default function AuthPage() {
   return (
-    <div className="loginPage">
+    <div className="authPage">
       <Auth />
     </div>
   );

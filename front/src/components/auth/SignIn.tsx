@@ -1,21 +1,26 @@
 import { useContext, useState } from "react";
-import "../assets/styles/login.css";
-import { userContext, type UserType } from "../useContext/userContext";
+import "../../assets/styles/signIn.css";
+import { userContext, type UserType } from "../../useContext/userContext";
+import { signInUserAPi } from "../../api/authApi";
 
 const objUser: UserType = {
   username: "",
   password: "",
 };
 
-export default function Login() {
-  const [newUser, setNewUser] = useState<UserType>(objUser);
+export default function SignIn() {
   const { setUser } = useContext(userContext)!;
-
-  async function loginOn() {
-    
+  const [newUser, setNewUser] = useState<UserType>(objUser);
+  const [isFound, setIsFound] = useState<boolean>(true);
+  async function loginOnClick() {
+    const user = await signInUserAPi(newUser);
+    if (user) {
+      setUser(user);
+      localStorage.setItem("user", JSON.stringify(user));
+    } else setIsFound(false);
   }
   return (
-    <div className="login">
+    <div className="signIn">
       <div className="form">
         <div className="wlcome">
           <h1>Welcome</h1>
@@ -39,21 +44,15 @@ export default function Login() {
           }}
         />
         <div className="btn-add">
-          <div
-            className="btn"
-            onClick={() => {
-              setUser(newUser);
-              localStorage.setItem("user", JSON.stringify(newUser))
-            }}
-          >
+          <div className="btn" onClick={loginOnClick}>
             Enter
           </div>
         </div>
-        {/* {!isSucced && (
+        {!isFound && (
           <p className="msg">
-            Post addition failed! check if you have filled in all fields...
+            ❌ User not found, check username or password...
           </p>
-        )} */}
+        )}
       </div>
     </div>
   );

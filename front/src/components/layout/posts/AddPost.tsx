@@ -3,9 +3,9 @@ import {
   postContext,
   type objType,
   type PostType,
-} from "../../useContext/postContext";
-import "../../assets/styles/addPost.css";
-import { writePostApi } from "../../api/clientApi";
+} from "../../../useContext/postContext";
+import "../../../assets/styles/addPost.css";
+import { AddPostApi } from "../../../api/postsApi";
 
 const postObj: PostType = {
   id: "",
@@ -23,7 +23,7 @@ export default function AddPost({ fn }: { fn: (isSucced: boolean) => void }) {
   const [isSucced, setIsSucced] = useState<boolean>(true);
   const { posts }: objType = useContext(postContext)!;
   async function handlerOnCLick() {
-    const fullPost = await writePostApi(newPost);
+    const fullPost = await AddPostApi(newPost);
     if (fullPost) {
       localStorage.setItem("data", JSON.stringify([...posts!, fullPost]));
       fn(true);
@@ -60,9 +60,11 @@ export default function AddPost({ fn }: { fn: (isSucced: boolean) => void }) {
             Add Post
           </div>
         </div>
-      {!isSucced && (
-        <p className="msg">Post addition failed! check if you have filled in all fields...</p>
-      )}
+        {!isSucced && (
+          <p className="msg">
+            Post addition failed! check if you have filled in all fields...
+          </p>
+        )}
       </div>
     </div>
   );
