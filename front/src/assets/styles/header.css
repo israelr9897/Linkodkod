@@ -1,36 +1,45 @@
-.header{
+.header {
     width: 100%;
     height: 15vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* border-bottom: 3px solid #006eff; */
     background-color: #bbbbbb;
     color: #006eff;
     position: sticky;
     top: 0;
     padding: 1%;
-    
-    
+
 }
 
-.toHome{
+.left-head {
+    /* width: 30%; */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toHome {
+    background-size: cover;
+}
+
+.toHome:hover {
+    cursor: pointer;
+}
+
+.toHome img {
     width: 50px;
-    height: 50px;
-    background-image: url("./home.png");
-    background-size:cover ;
-}
-.toHome:hover{
-    cursor: pointer;
 }
 
-.addPost{
+.addPost {
     color: #006eff;
     text-decoration: none;
     font-size: 25px;
     font-weight: 600;
 }
-.log-out{
+
+.log-out {
     color: #006eff;
     text-decoration: none;
     font-size: 25px;
@@ -39,31 +48,34 @@
     justify-content: end;
 }
 
-.log-out > img{
-    width: 20%;
+.log-out>img {
+    width: 40px;
 }
 
-.log-out:hover{
+.log-out:hover {
     cursor: pointer;
 }
 
-.slogen{
-    /* width: 70%; */
+.slogen {
     font-size: 20px;
-    /* border: 1px solid #2986ff; */
-    
+
 }
 
-.logo{
-    width: 10%;
-    /* height: 100%; */
-    /* border: 1px solid #2986ff; */
+.right-head {
+    /* width: 30%; */
+    height: 100%;
     display: flex;
     justify-content: end;
-    
+    align-items: center;
+    gap: 15px;
 }
 
-.logo-img{
+.logo {
+    display: flex;
+    justify-content: end;
+}
+
+.logo-img {
     width: 100px;
     height: 100px;
     border-radius: 10px;
@@ -73,26 +85,29 @@
 
 /* for phones */
 @media screen and (max-width: 700px) {
-    .header{
+    .header {
         height: 10vh;
     }
-    .toHome{
-        width: 8%;
-        height: 35%;
+
+    .toHome img{
+        width: 30px;
     }
 
-    .addPost{
-        font-size: 15px;
+    .addPost {
+        font-size: 13px;
     }
 
-    .log-out{
-        font-size: 15px;
+    .log-out img{
+        width: 30px;
     }
-    .slogen{
+
+    .slogen {
+        width: 45%;
         font-size: 7px;
     }
-    .logo-img{
-        width: 60px;
+
+    .logo-img {
+        width: 50px;
         height: 50px;
     }
 }

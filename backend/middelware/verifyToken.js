@@ -1,7 +1,8 @@
 import jwt from "jsonwebtoken";
 
+//פונקציה הבודקת האם הטוקן תקין
 export async function verifyToken(req, res, next) {
-  const token = req.cookies.authToken;
+  const token = req.headers["authorization"];
   if (!token) {
     res.status(403).send({ msg: "Access denied" });
   } else {

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "../assets/styles/postPage.css";
 import { useParams } from "react-router";
 import Post from "../components/layout/posts/Post";
-import { GetPostByIdApi } from "../api/clientApi";
+import { GetPostByIdApi } from "../api/postsApi";
 
 export default function PostPage() {
   const { id } = useParams();

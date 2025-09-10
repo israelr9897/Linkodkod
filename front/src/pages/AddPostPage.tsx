@@ -1,4 +1,4 @@
-import AddPost from "../components/layout/AddPost";
+import AddPost from "../components/layout/posts/AddPost";
 import "../assets/styles/addPostPage.css";
 import { useState } from "react";
 

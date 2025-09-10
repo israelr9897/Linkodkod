@@ -2,19 +2,8 @@ import {
   createToken,
   ReturnHashPassword,
   returnIsPassword,
-} from "../db/services/authService.js";
+} from "../services/authService.js";
 import { getAllUsersDB, writeAllUsersDB } from "../db/usersDal.js";
-
-export async function getAllUsers(req, res) {
-  try {
-    const users = await getAllUsersDB();
-    console.log(users);
-    res.json({ data: users });
-  } catch (error) {
-    console.log("get all users error massege: ", error);
-    res.status(500).send({ msg: error });
-  }
-}
 
 export async function login(req, res) {
   try {
@@ -24,10 +13,11 @@ export async function login(req, res) {
     if (!user) return res.status(403).json({ msg: "User not found" });
     const passIsTrue = await returnIsPassword(password, user.password);
     if (passIsTrue) {
-      createToken(res, user);
-      res.json({ data: user });
-    }
-    else res.status(403).json({ msg: "username or password not found" });
+      const token = createToken(res, user);
+      res.cookie("authToken", token, { httpOnly: true });
+      user.token = token
+      res.json({ user: user});
+    } else res.status(403).json({ msg: "username or password not found" });
   } catch (error) {
     console.log("login error massege: ", error);
     res.status(500).send({ msg: error });
@@ -37,9 +27,8 @@ export async function login(req, res) {
 export async function signup(req, res) {
   try {
     const user = req.body;
-    console.log(user);
     user.password = await ReturnHashPassword(user.password);
-    console.log(user.password);
+    if(!user.password) throw new Error("empty password")
     const users = JSON.parse(await getAllUsersDB());
     users.push(user);
     await writeAllUsersDB(users);

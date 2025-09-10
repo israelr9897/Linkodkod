@@ -1,5 +1,5 @@
 import { getAllPostsDB, writeAllPostsDB } from "../db/postsDAl.js";
-import { createPost } from "../db/services/postService.js";
+import { createPost } from "../services/postService.js";
 
 export async function getAllPosts(req, res) {
   try {
